@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 const model = require('../models/model');
+const requestModel = require('../models/requests');
 const bcrypt = require('bcrypt');
 
 /* GET home page. */
@@ -110,7 +111,7 @@ router.post('/register', (req,res,next) => {
         }
         else {
           if (!bcrypt.compareSync(req.body.password, user.password)) {
-            req.flash('loginMessage', 'Oops! Wrong Password');
+            req.flash('message', 'Oops! Wrong Password');
             res.redirect('/login')
           }
           else {
@@ -138,7 +139,9 @@ router.post('/register', (req,res,next) => {
     });
 
     router.get('/generalProfile',function(req, res){
-      res.render('generalProfile');
+      res.render('generalProfile', {
+        message: req.flash('message')
+      });
     });
     router.get('/workerProfile',function(req, res){
       res.render('workerProfile');
@@ -152,4 +155,13 @@ router.post('/register', (req,res,next) => {
     router.get('/buyerProfile',function(req, res){
       res.render('buyerProfile');
     });
+    router.post('/generalProfile', function(req, res) {
+      var request = requestModel(req.body);
+      request.username = req.session.user.username;
+      request.save(function(err,user){
+        if (err) return next(err);
+        req.flash('message', "Successfully submmitted")
+        res.redirect('/generalProfile')
+      })
+    })
 module.exports = router;
