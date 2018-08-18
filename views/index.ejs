@@ -30,7 +30,11 @@
             <p class="white-text mb-4">Government of Odisha invites students to participate in <strong> HACKATHON and come up with exciting,</strong> innovative, novel and viable solutions<strong> for the listed themes.</strong>  It is a challenge designed to inspire the creative and dynamic minds and to put their skills to test , thereby identifying and rewarding the tech wizards.</p>
             <p class="white-text mb-4"><strong>Press the button below to explore the Themes</strong></p>
           <!--  <p class="white-text mb-4">Come up with your ideas from <strong>8th to 11th March </strong> and the actual building process will start from <strong>17th March (to 18th March)</strong>. Compete and build the best devices to win <strong>tons of great prizes!</strong></p> -->
+          <% if(!user){ %>
             <a class="btn btn-light btn-xl js-scroll-trigger" href="/themes">Get Started!</a>
+            <% }else{ %>
+            <a class="btn btn-light btn-xl js-scroll-trigger" href="/<%- user.type %>Profile">Profile</a>
+            <% } %>
           </div>
         </div>
       </div>
@@ -60,31 +64,23 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#overview">Overview</a>
             </li>
-            <!-- <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#process">Hackathon Process</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#prizes">Prizes</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#rules">Rules</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="#eventplace">Event Place</a>
-            </li> -->
+            <% if(!user){ %>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/register">Signup</a>
             </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/login">Login</a>
             </li>
+            <% } else { %>
 
-             <!-- <li class="nav-item">
-               <a class="nav-link js-scroll-trigger" href="/teamProfile"></a>
+             <li class="nav-item">
+               <a class="nav-link js-scroll-trigger" href="/<%user.type%>Profile"></a>
              </li>
              <li class="nav-item">
                <a class="nav-link js-scroll-trigger" href="/logout">Logout</a>
-             </li> -->
+             </li>
+
+             <% } %>
           </ul>
         </div>
       </div>

@@ -5,7 +5,7 @@ const bcrypt = require('bcrypt');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('index');
+  res.render('index',{'user':req.session});
 });
 
 router.get('/about',function(req, res){
@@ -26,7 +26,7 @@ router.get('/register', function(req, res) {
 
 router.post('/register', (req,res,next) => {
     // var usermodel = new model();
-    if (req.body.type == "public") {
+    if (req.body.type == "general") {
       var type = model.generalModel;
     }
     else if (req.body.type == "worker") {
@@ -88,7 +88,7 @@ router.post('/register', (req,res,next) => {
 
   router.post('/login', (req,res,next) => {
       // var usermodel = new model();
-      if (req.body.type == "public") {
+      if (req.body.type == "general") {
         var type = model.generalModel;
       }
       else if (req.body.type == "worker") {
@@ -115,8 +115,9 @@ router.post('/register', (req,res,next) => {
           }
           else {
             req.session.user = user;
+            req.session.type = req.body.type;
             console.log(req.session.user);
-            if (req.body.type == "public") {
+            if (req.body.type == "general") {
               res.redirect('/generalProfile');
             }
             else if (req.body.type == "worker") {
@@ -137,7 +138,7 @@ router.post('/register', (req,res,next) => {
     });
 
     router.get('/generalProfile',function(req, res){
-      
+
       res.render('generalProfile');
     });
     router.get('/workerProfile',function(req, res){
