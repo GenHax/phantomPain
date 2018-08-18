@@ -146,9 +146,6 @@ router.post('/register', (req,res,next) => {
     router.get('/workerProfile',function(req, res){
       res.render('workerProfile');
     });
-    router.get('/colectorProfile',function(req, res){
-      res.render('collectorProfile');
-    });
     router.get('/industryProfile',function(req, res){
       res.render('industryProfile');
     });
@@ -160,8 +157,26 @@ router.post('/register', (req,res,next) => {
       request.username = req.session.user.username;
       request.save(function(err,user){
         if (err) return next(err);
-        req.flash('message', "Successfully submmitted")
+        req.flash('message', "Successfully submitted")
         res.redirect('/generalProfile')
       })
+    });
+
+
+    router.get('/collectorProfile', function(req, res) {
+      if(req.session.user) {
+        var query = requestModel.find();
+        query.select('username type location address');
+
+        query.exec(function(err, request){
+          if (err) throw err;
+          res.render('collectorProfile', { "requests": request})
+        });
+      }
+      else {
+        req.flash('message','You need to Login');
+        res.redirect('/login')
+      }
     })
+
 module.exports = router;
