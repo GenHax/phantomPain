@@ -13,7 +13,9 @@ router.get('/about',function(req, res){
 });
 
 router.get('/login', function(req, res) {
-  res.render('login');
+  res.render('login', {
+    message: req.flash('message')
+  });
 });
 
 router.get('/register', function(req, res) {
@@ -72,5 +74,69 @@ router.post('/register', (req,res,next) => {
       }
     })
   });
+  router.post('/login', (req,res,next) => {
+      // var usermodel = new model();
+      if (req.body.type == "public") {
+        var type = model.generalModel;
+      }
+      else if (req.body.type == "worker") {
+        var type = model.workerModel;
+      }
+      else if (req.body.type == "collector") {
+        var type = model.collectorModel;
+      }
+      else if (req.body.type == "industry") {
+        var type = model.industryModel;
+      }
+      else{
+        var type = model.buyerModel;
+      }
+      type.findOne( { username: req.body.username}, function(err, user) {
+        if(!user){
+          req.flash('message', 'No such username')
+          return res.redirect('/login')
+        }
+        else {
+          if (!bcrypt.compareSync(req.body.password, user.password)) {
+            req.flash('loginMessage', 'Oops! Wrong Password');
+            res.redirect('/login')
+          }
+          else {
+            req.session.user = user;
+            console.log(req.session.user);
+            if (req.body.type == "public") {
+              res.redirect('/generalProfile');
+            }
+            else if (req.body.type == "worker") {
+              res.redirect('/workerProfile');
+            }
+            else if (req.body.type == "collector") {
+              res.redirect('/collectorProfile');
+            }
+            else if (req.body.type == "industry") {
+              res.redirect('/industryProfile');
+            }
+            else{
+              res.redirect('/buyerProfile');
+            }
+          }
+        }
+      })
+    });
 
+    router.get('/generalProfile',function(req, res){
+      res.render('generalProfile');
+    });
+    router.get('/workerProfile',function(req, res){
+      res.render('workerProfile');
+    });
+    router.get('/colectorProfile',function(req, res){
+      res.render('collectorProfile');
+    });
+    router.get('/industryProfile',function(req, res){
+      res.render('industryProfile');
+    });
+    router.get('/buyerProfile',function(req, res){
+      res.render('buyerProfile');
+    });
 module.exports = router;

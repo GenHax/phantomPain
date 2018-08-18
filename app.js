@@ -33,6 +33,10 @@ app.use(session({
 }));
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(flash())
+app.use(function(req, res, next) {
+  res.locals.user = req.session.user;
+  next();
+});
 app.use('/', index);
 app.use('/users', users);
 
