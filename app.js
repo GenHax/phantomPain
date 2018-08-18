@@ -7,6 +7,9 @@ var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var index = require('./routes/index');
 var users = require('./routes/users');
+var flash = require('express-flash');
+var session = require('express-session');
+var MongoStore = require('connect-mongo/es5')(session);
 
 var app = express();
 
@@ -21,8 +24,15 @@ app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
+app.use(session({
+  resave: true,
+  saveUninitialized: true,
+  secret: "vdvdhsajvda",
+  store: new MongoStore({ url: 'mongodb://localhost:27017/alchemy', autoReconnect: true}),
+  cookie: {_expires : 10800000}
+}));
 app.use(express.static(path.join(__dirname, 'public')));
-
+app.use(flash())
 app.use('/', index);
 app.use('/users', users);
 

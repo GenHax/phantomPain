@@ -10,6 +10,7 @@ var generalSchema = new Schema({
   email : { type : String , required : true},
   contact : { type : String , required : true},
   address : { type : String , required : true},
+  password : { type : String, required : true},
   credit : { type : Number , default : 0}
   });
 var collectorSchema = new Schema({
@@ -18,6 +19,7 @@ var collectorSchema = new Schema({
   email : { type : String , required : true},
   contact : { type : String , required : true},
   address : { type : String , required : true},
+  password : { type : String, required : true},
   });
 var workerSchema = new Schema({
   name : { type : String, required : true},
@@ -25,6 +27,7 @@ var workerSchema = new Schema({
   email : { type : String , required : true},
   contact : { type : String , required : true},
   address : { type : String , required : true},
+  password : { type : String, required : true},
   });
 var industrySchema = new Schema({
   name : { type : String, required : true},
@@ -32,6 +35,7 @@ var industrySchema = new Schema({
   email : { type : String , required : true},
   contact : { type : String , required : true},
   address : { type : String , required : true},
+  password : { type : String, required : true},
   });
 var buyerSchema = new Schema({
   name : { type : String, required : true},
@@ -39,6 +43,7 @@ var buyerSchema = new Schema({
   email : { type : String , required : true},
   contact : { type : String , required : true},
   address : { type : String , required : true},
+  password : { type : String, required : true},
 });
 
 var generalModel = mongoose.model('general', generalSchema);
@@ -46,4 +51,4 @@ var collectorModel = mongoose.model('collector', collectorSchema);
 var workerModel = mongoose.model('worker', workerSchema);
 var industryModel = mongoose.model('industry', industrySchema);
 var buyerModel = mongoose.model('buyer', buyerSchema);
-module.exports = {generalModel,collectorModel,workerModel,industryModel,generalModel}
+module.exports = {generalModel,collectorModel,workerModel,industryModel,buyerModel}
