@@ -74,6 +74,18 @@ router.post('/register', (req,res,next) => {
       }
     })
   });
+
+  router.get('/logout', function(req, res) {
+  req.session.destroy(function(err){
+     if(err){
+        console.log(err);
+     }else{
+         res.redirect('/login');
+     }
+  });
+
+});
+
   router.post('/login', (req,res,next) => {
       // var usermodel = new model();
       if (req.body.type == "public") {
@@ -125,6 +137,7 @@ router.post('/register', (req,res,next) => {
     });
 
     router.get('/generalProfile',function(req, res){
+      
       res.render('generalProfile');
     });
     router.get('/workerProfile',function(req, res){
