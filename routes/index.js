@@ -138,7 +138,6 @@ router.post('/register', (req,res,next) => {
     });
 
     router.get('/generalProfile',function(req, res){
-
       res.render('generalProfile');
     });
     router.get('/workerProfile',function(req, res){
