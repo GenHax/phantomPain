@@ -11,7 +11,8 @@ Lack of an economically accommodating system to curb and manage waste.
 ## PROBLEM STATEMENT II :
 State of the informal garbage collectors in the country.
 
-Our web-app defines an Everyday Waste Control  System gamified by a **Credit** based ideology that will provide just the right push to the people in a country like India to start managing their waste better.
+# The Solution:
+Our idea defines an Everyday Waste Control  System gamified by a ‘Credit’ based ideology that will provide just the right push to the people in a country like India to start managing their waste better.
 
 # How to use the Web App
 Clone the repository
