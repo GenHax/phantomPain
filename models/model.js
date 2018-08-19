@@ -28,13 +28,11 @@ var workerSchema = new Schema({
   contact : { type : String , required : true},
   address : { type : String , required : true},
   password : { type : String, required : true},
-  waste : {
-    paper : { type : Number, default : 0},
-    metal : { type : Number, default : 0},
-    cardboard : { type : Number, default : 0},
-    plastic : { type : Number, default : 0},
-    glass : { type : Number, default : 0}
-  }
+  paper : { type : Number, default : 0},
+  metal : { type : Number, default : 0},
+  cardboard : { type : Number, default : 0},
+  plastic : { type : Number, default : 0},
+  glass : { type : Number, default : 0}
   });
 var industrySchema = new Schema({
   name : { type : String, required : true},
