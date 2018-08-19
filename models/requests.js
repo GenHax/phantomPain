@@ -6,7 +6,9 @@ db.on('error', console.error.bind(console, 'connection error:'));
 
 var requestSchema = new Schema({
   username : { type : String, required : true},
-  type : {  type : String, required : true}
+  type : {  type : String, required : true},
+  location : { type : String, required : true},
+  address : { type : String, required: true}
   });
 
   var requestModel = mongoose.model('request', requestSchema);
