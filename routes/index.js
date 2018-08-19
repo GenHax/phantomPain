@@ -4,6 +4,10 @@ const model = require('../models/model');
 const requestModel = require('../models/requests');
 const bcrypt = require('bcrypt');
 
+const waste2credit = 10;
+const waste2money = 1;
+
+
 /* GET home page. */
 router.get('/', function(req, res, next) {
   res.render('index',{'user':req.session});
@@ -164,4 +168,24 @@ router.post('/register', (req,res,next) => {
         res.redirect('/generalProfile')
       })
     })
+
+
+    router.post('/wastecollection',function(req,res) {
+      var ob = { paper : req.body.paper , metal : req.body.metal , cardboard : req.body.cardboard , plastic : req.body.plastic ,glass : req.body.glass };
+      var tcredit = parseInt(req.body.paper) + parseInt(req.body.metal) + parseInt(req.body.cardboard) + parseInt(req.body.plastic) + parseInt(req.body.glass);
+      console.log(req.body);
+      console.log(tcredit);
+      // model.workerModel.findOneAndUpdate( { username: req.session.username }, { $set : {
+      //   "waste.paper" : waste.paper + req.body.paper ,
+      //   "waste.metal" : waste.metal + req.body.metal ,
+      //   "waste.cardboard" : waste.cardboard + req.body.cardboard ,
+      //   "waste.plastic" : waste.plastic + req.body.plastic ,
+      //   "waste.glass" : waste.glass + req.body.glass
+      // }})
+      model.generalModel.findOneAndUpdate( { username: req.body.username }, { $inc : { credit : parseInt(tcredit)}  }).then(res.redirect('/workerProfile')).catch((error) => {console.log(error)})
+      .then()
+      .catch((error) => {console.log(error)
+      })
+
+    });
 module.exports = router;
