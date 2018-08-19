@@ -3,8 +3,6 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <!--  <meta name="author" content="GNU/Linux Users' Group,">
-    <meta name="keywords" content="hackathon, aavishkar, nit duragpur"> -->
 
     <title>Alchemy</title>
 
@@ -65,7 +63,15 @@
     <button type="button" class="btn btn-success" name="accept">Accept</button><button type="button" class="btn btn-danger" name="reject">Reject</button>
   </div>
   <% } %>
-
+  <br>
+  <center>
+    <h2><strong>Total waste collected</strong></h2>
+    <h3>Total paper waste: <%= objects.paper %></h3>
+    <h3>Total metal waste: <%= objects.metal %></h3>
+    <h3>Total cardboard waste: <%= objects.cardboard %></h3>
+    <h3>Total plastic waste: <%= objects.plastic %></h3>
+    <h3>Total glass waste: <%= objects.glass %></h3>
+  </center>
 </div>
 </section>
 

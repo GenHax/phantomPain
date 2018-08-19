@@ -170,11 +170,24 @@ router.post('/register', (req,res,next) => {
     router.get('/collectorProfile', function(req, res) {
       if(req.session.user) {
         var query = requestModel.find();
+        var object = model.workerModel.find();
         query.select('username type location address');
+        object.select('paper metal cardboard plastic glass')
 
         query.exec(function(err, request){
           if (err) throw err;
-          res.render('collectorProfile', { "requests": request})
+          object.exec(function (err, objects) {
+            if (err) throw err;
+            var ob = { "paper" : 0 , "metal" : 0 , "cardboard" : 0 , "plastic" : 0 ,"glass" : 0 };
+            for(var i=0; i< objects.length; i++){
+              ob.paper += objects[i].paper;
+              ob.metal += objects[i].metal;
+              ob.cardboard += objects[i].cardboard;
+              ob.plastic += objects[i].plastic;
+              ob.glass += objects[i].glass;
+            }
+            res.render('collectorProfile', { "requests": request, "objects": ob})
+          });
         });
       }
       else {
