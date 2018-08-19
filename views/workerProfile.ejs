@@ -60,7 +60,6 @@
       <div class="col-lg-12 col-md-offset-3">
         <h2>Username:<%- user.username %></h2>
         <h2>Name:<%- user.name %></h2>
-        <h2>Waste collected:</h2>
       </div>
     </div>
     </section>
@@ -71,19 +70,27 @@
       <h1>Type of waste found: </h1>
       <div class="form-group">
         <label>Username:</label>
-        <input type="text" class="form-control" name="username" style="width:10%">
-        <label>Paper</label>
-        <input type="number" class="form-control" name="paper" value=0 style="width:10%">
-        <label>Metal</label>
-        <input type="number" class="form-control" name="metal" value=0 style="width:10%">
-        <label>Cardboard</label>
-        <input type="number" class="form-control" name="cardboard" value=0 style="width:10%">
-        <label>Plastic</label>
-        <input type="number" class="form-control" name="plastic" value=0 style="width:10%">
-        <label>Glass</label>
-        <input type="number" class="form-control" name="glass" value=0 style="width:10%">
+        <input type="text" class="form-control" name="username" style="width:30%">
       </div>
-      <button type="submit" class="btn btn-success">Submit</button>
+      <div class="form-group">
+        <label>Paper</label>
+        <input type="number" class="form-control" name="paper" value=0 style="width:30%">
+      </div>
+      <div class="form-group">
+        <label>Metal</label>
+        <input type="number" class="form-control" name="metal" value=0 style="width:30%">
+      </div class="form-group">
+        <label>Cardboard</label>
+        <input type="number" class="form-control" name="cardboard" value=0 style="width:30%">
+      <div class="form-group">
+        <label>Plastic</label>
+        <input type="number" class="form-control" name="plastic" value=0 style="width:30%">
+      </div>
+      <div class="form-group">
+        <label>Glass</label>
+        <input type="number" class="form-control" name="glass" value=0 style="width:30%">
+      </div>
+      <button type="submit" class="btn btn-success">Add Credit</button>
     </form>
 </center>
 <script src="/js/jquery.min.js"></script>

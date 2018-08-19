@@ -42,23 +42,9 @@
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="#overview">Overview</a>
             </li>
-            <% if(!user){ %>
-            <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="/register">Signup</a>
-            </li>
             <li class="nav-item">
               <a class="nav-link js-scroll-trigger" href="/login">Login</a>
             </li>
-            <% } else { %>
-
-             <li class="nav-item">
-               <a class="nav-link js-scroll-trigger" href="/<%user.type%>Profile"></a>
-             </li>
-             <li class="nav-item">
-               <a class="nav-link js-scroll-trigger" href="/logout">Logout</a>
-             </li>
-
-             <% } %>
           </ul>
         </div>
       </div>
@@ -69,9 +55,9 @@
         <div class="row">
           <div class="col-lg-10 mx-auto">
             <h1 class="text-uppercase">
-              <strong>Alchemy</strong>
+              <strong style="background-color:rgba(0,0,0,0.5);color:white">Alchemy</strong>
             </h1>
-            <h2 class="typewriter-effect"></h2>
+            <h2 class="typewriter-effect" style="background-color:rgba(0,0,0,0.5);color:white"></h2>
             <hr class="my-4">
           </div>
           <div class="col-lg-8 mx-auto">
