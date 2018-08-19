@@ -2,18 +2,18 @@
 
 Team "Phantom Pain" with members- Shaswat Swain, Ankit Jena, Agni Panda
 
-## Topic:
+# Topic:
 Waste Management
 
 ## PROBLEM STATEMENT I :
 Lack of an economically accommodating system to curb and manage waste.
 
-##PROBLEM STATEMENT II :
+## PROBLEM STATEMENT II :
 State of the informal garbage collectors in the country.
 
 Our web-app defines an Everyday Waste Control  System gamified by a **Credit** based ideology that will provide just the right push to the people in a country like India to start managing their waste better.
 
-# How to use
+# How to use the Web App
 Clone the repository
 
 ```git clone https://github.com/GenHax/phantomPain```
@@ -38,16 +38,16 @@ Install mongodb (ignore if already installed)
 
 ```sudo apt-get install -y mongodb-org```
 
-install npm in the directory
+Install npm in the directory
 
 ```sudo apt-get install npm```
 
-start the mongodb database
+Start the mongodb database
 
 ```sudo service mongodb start```
 
 ```mongod```
 
-start the web app
+Start the web app
 
 ```npm start```
