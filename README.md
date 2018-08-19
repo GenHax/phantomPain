@@ -15,27 +15,39 @@ Our web-app defines an Everyday Waste Control  System gamified by a **Credit** b
 
 # How to use
 Clone the repository
+
 ```git clone https://github.com/GenHax/phantomPain```
 
 Move to the directory
+
 ```cd phantomPain```
 
 Install node.js (ignore if already installed)
+
 ```sudo apt-get update```
+
 ```sudo apt-get install nodejs```
 
 Install mongodb (ignore if already installed)
+
 ```sudo apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv 9DA31620334BD75D9DCB49F368818C72E52529D4```
+
 ```echo "deb [ arch=amd64 ] https://repo.mongodb.org/apt/ubuntu bionic/mongodb-org/4.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-4.0.list```
+
 ```sudo apt-get update```
+
 ```sudo apt-get install -y mongodb-org```
 
 install npm in the directory
+
 ```sudo apt-get install npm```
 
 start the mongodb database
+
 ```sudo service mongodb start```
+
 ```mongod```
 
 start the web app
+
 ```npm start```
