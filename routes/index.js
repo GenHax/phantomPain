@@ -184,19 +184,16 @@ router.post('/register', (req,res,next) => {
     })
 
     router.post('/wastecollection',function(req,res) {
-      var ob = { paper : req.body.paper , metal : req.body.metal , cardboard : req.body.cardboard , plastic : req.body.plastic ,glass : req.body.glass };
+      // var ob = { paper : req.body.paper , metal : req.body.metal , cardboard : req.body.cardboard , plastic : req.body.plastic ,glass : req.body.glass };
       var tcredit = parseInt(req.body.paper) + parseInt(req.body.metal) + parseInt(req.body.cardboard) + parseInt(req.body.plastic) + parseInt(req.body.glass);
-      console.log(req.body);
-      console.log(tcredit);
-      // model.workerModel.findOneAndUpdate( { username: req.session.username }, { $set : {
-      //   "waste.paper" : waste.paper + req.body.paper ,
-      //   "waste.metal" : waste.metal + req.body.metal ,
-      //   "waste.cardboard" : waste.cardboard + req.body.cardboard ,
-      //   "waste.plastic" : waste.plastic + req.body.plastic ,
-      //   "waste.glass" : waste.glass + req.body.glass
-      // }})
+      // console.log(req.session);
+      // console.log(tcredit);
+      model.workerModel.findOneAndUpdate( { username: req.session.user.username }, { $inc : { paper : parseInt(req.body.paper), metal : parseInt(req.body.metal), cardboard : parseInt(req.body.cardboard), plastic : parseInt(req.body.plastic), glass : parseInt(req.body.glass) }})
+      .then(
       model.generalModel.findOneAndUpdate( { username: req.body.username }, { $inc : { credit : parseInt(tcredit)}  }).then(res.redirect('/workerProfile')).catch((error) => {console.log(error)})
       .then()
+      .catch((error) => {console.log(error)
+      }))
       .catch((error) => {console.log(error)
       })
 
