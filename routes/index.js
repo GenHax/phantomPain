@@ -201,7 +201,7 @@ router.post('/register', (req,res,next) => {
       var tcredit = parseInt(req.body.paper) + parseInt(req.body.metal) + parseInt(req.body.cardboard) + parseInt(req.body.plastic) + parseInt(req.body.glass);
       // console.log(req.session);
       // console.log(tcredit);
-      model.workerModel.findOneAndUpdate( { username: req.session.user.username }, { $inc : { paper : parseInt(req.body.paper), metal : parseInt(req.body.metal), cardboard : parseInt(req.body.cardboard), plastic : parseInt(req.body.plastic), glass : parseInt(req.body.glass) }})
+      model.workerModel.findOneAndUpdate( { username: req.session.user.username }, { $inc : { paper : parseInt(req.body.paper)*3, metal : parseInt(req.body.metal)*8, cardboard : parseInt(req.body.cardboard)*4, plastic : parseInt(req.body.plastic)*2, glass : parseInt(req.body.glass)*3 }})
       .then(
       model.generalModel.findOneAndUpdate( { username: req.body.username }, { $inc : { credit : parseInt(tcredit)}  }).then(res.redirect('/workerProfile')).catch((error) => {console.log(error)})
       .then()

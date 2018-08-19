@@ -56,11 +56,11 @@
 <section>
 <div class="container">
   <% for(var i=0; i < requests.length; i++) { %>
-    <div class="col-lg-12">
+    <div class="col-lg-12" id="id<%= i %>">
     <h2><%= requests[i].username %> requested for a pickup of <%= requests[i].type %></h2>
     <h3>Location: <%= requests[i].location %></h3>
     <h3>Address: <%= requests[i].address %></h3>
-    <button type="button" class="btn btn-success" name="accept">Accept</button><button type="button" class="btn btn-danger" name="reject">Reject</button>
+    <button type="button" class="btn btn-success" name="accept" onclick="accept('id<%= i %>')">Accept</button><button type="button" class="btn btn-danger" name="reject" onclick="accept('id<%= i %>')">Reject</button>
   </div>
   <% } %>
   <br>
@@ -74,6 +74,14 @@
   </center>
 </div>
 </section>
+<script>
+  function accept(id) {
+    console.log(id);
+    var div = document.getElementById(id);
+    console.log(div);
+    div.style.display = "none";
+  }
+</script>
 
 <script src="/js/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
